@@ -341,6 +341,7 @@ def uploadpage():
         listmine=upMine.minetext(text_mine)
         for index_mine in range(len(listmine)):
             st.write(listmine[index_mine],key=index_mine)
+            sheet_instance3.append_row(listmine[index_mine][0])
             
 def glossarypage():
     st.title("Sistem Istilah Dwibahasa")
@@ -443,7 +444,7 @@ def glossarypage():
         gloss_column(25)
     
 st.sidebar.title('Navigation Pane')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Upload Page','Glossary Page'])
+options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Knowledge Expert Page','Upload Page','Glossary Page'])
 #options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Knowledge Expert Page', 'Upload Page','Glossary Page'])
 
 if options=='Home':
