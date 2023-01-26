@@ -197,6 +197,7 @@ def gloss_err(i):
             button_phold.empty()
             
 def printquery(textq):
+    printtext(textq)
     count=0
     for i in eng_word:
         if textq.lower()==i.lower():
