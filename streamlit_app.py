@@ -341,13 +341,7 @@ def uploadpage():
         listmine=upMine.minetext(text_mine)
         for index_mine in range(len(listmine)):
             st.write(listmine[index_mine],key=index_mine)
-    if st.button("Show"):
-        st.markdown("reaction controlling', 0.116")
-        st.markdown('proved system pedestrians, 0.116')
-        st.markdown('proved system, 0.116')
-        st.markdown('passing light gateway, 0.153')
             
-    
 def glossarypage():
     st.title("Sistem Istilah Dwibahasa")
     st.image(url_image)
