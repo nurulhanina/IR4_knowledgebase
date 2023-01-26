@@ -1,0 +1,5 @@
+streamlit==1.1.0
+plotly==5.1.0
+PyPDF2==3.0.1
+gspread==5.7.2
+oauth2client==4.1.3
