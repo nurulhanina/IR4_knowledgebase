@@ -1,4 +1,7 @@
 import streamlit as st
+import gspread
+import oauth2client
+from oauth2client.service_account import ServiceAccountCredentials
 
 def homepage():
     st.title("SISTEM ISTILAH DWIBAHASA")
