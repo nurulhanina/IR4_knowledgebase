@@ -338,7 +338,13 @@ def uploadpage():
                 text_mine=upload_text
                 
     st.markdown("The Keywords Extracted")
-    #list_mine=minetext(text_mine)
+    if text_mine!="":
+        listmine=minetext(textmine)
+    if st.button("Show"):
+        st.markdown("reaction controlling', 0.116")
+        st.markdown('proved system pedestrians, 0.116')
+        st.markdown('proved system, 0.116')
+        st.markdown('passing light gateway, 0.153')
             
     
 def glossarypage():
