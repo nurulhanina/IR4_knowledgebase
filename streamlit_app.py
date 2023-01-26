@@ -295,8 +295,8 @@ def glossarypage():
     st.image(url_image)
     st.header("Glossary")
     with st.expander("A Glossary"):
-    st.write("Letter A")
-    gloss_column(0)
+        st.write("Letter A")
+        gloss_column(0)
     
     with st.expander("B Glossary"):
         st.write("Letter B")
