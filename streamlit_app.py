@@ -237,7 +237,7 @@ def searchpage(searchtext):
             printtext("Word Not Found")
     else:
         word_search=st.text_input("Enter Text")
-        st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]"
+        st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]")
         if word_search:
             count=0
             for i in eng_word:
