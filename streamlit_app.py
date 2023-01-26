@@ -443,7 +443,8 @@ def glossarypage():
         gloss_column(25)
     
 st.sidebar.title('Navigation Pane')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Knowledge Expert Page', 'Upload Page','Glossary Page'])
+options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Upload Page','Glossary Page'])
+#options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Knowledge Expert Page', 'Upload Page','Glossary Page'])
 
 if options=='Home':
     homepage()
