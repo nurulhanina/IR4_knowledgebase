@@ -29,6 +29,7 @@ word_search=""
 classType=["Additive Manufacturing", "Augmented Reality","Autonomous Robots","Big Data","Cloud Computing", "Cyber Physical System","Internet of Service", "Internet of Things","Simulation","Other"]
 alpha=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 l_alpha=[]
+text_raw="Test"
 
 
 #DataFrame
@@ -197,14 +198,40 @@ def gloss_err(i):
             button_phold.empty()
             
 def printquery(textq):
-    printtext(textq)
     count=0
     for i in eng_word:
         if textq.lower()==i.lower():
             printwhole(count)
             break
         count+=1
-    
+
+def show_text(t):
+    st.caption("This is the text that has been uploaded")
+    st.markdown(t)
+    st.caption("Press Process to begin")
+    if st.button("Process"):
+        text_raw=t
+        
+#Functions for PDF extraction
+def pdf_page_num(pdf_file):
+    reader = PdfReader(pdf_file)
+    page_num = len(reader.pages)
+    return page_num
+
+def clean_pdf(pdf):
+    lines = [line for line in pdf.split('\n') if line.strip()]
+    return lines
+
+def extract_pdf(pdf_file,s,e):
+    reader = PdfFileReader(pdf_file)
+    pdftext=[]
+    for page in range(s,e):
+            content=reader.getPage(page).extract_text()
+            pdftext.append(content)
+    pdf_text="".join(pdftext)
+    pdf_text=clean_pdf(pdf_text)
+    pdf_text="".join(pdf_text)
+    return pdf_text
 
 def homepage():
     st.title("SISTEM ISTILAH DWIBAHASA")
@@ -287,6 +314,24 @@ def uploadpage():
     st.title("Sistem Istilah Dwibahasa")
     st.image(url_image)
     st.header("Upload Sources")
+    
+    with st.expander("Uploading text"):
+        st.caption("Upload a paragraph of a journal, research paper, newsletter to get your keywords.")
+        text_upload=st.text_input("Enter Text")
+        if text_upload:
+            show_text(text_upload)
+            
+    with st.expander("Uploading PDF File"):
+        st.caption("Upload a PDF file of a journal, research paper, newsletter to get your keywords.")
+        uploaded_file = st.file_uploader("Choose a file", "pdf")
+        if uploaded_file is not None:
+            st.caption("Choose the pages to be process")
+            start=st.slider("Start Page",0,pdf_page_num(uploaded_file),3)
+            end=st.slider("End Page",0,pdf_page_num(uploaded_file),3)
+            if st.button("Confirm Pages"):
+                upload_text=extract_pdf(uploaded_file,start,end)
+                show_text(upload_text)
+            
     
 def glossarypage():
     st.title("Sistem Istilah Dwibahasa")
@@ -401,10 +446,3 @@ elif options=='Upload Page':
     uploadpage()
 elif options=='Glossary Page':
     glossarypage()
-  
-
-
-           
-
-
-
