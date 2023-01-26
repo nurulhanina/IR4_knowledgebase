@@ -13,8 +13,7 @@ def sort_coo(coo_matrix):
     tuples = zip(coo_matrix.col, coo_matrix.data)
     return sorted(tuples, key=lambda x: (x[1], x[0]), reverse=True)
  
-def extract_topn_from_vector(feature_names, sorted_items, topn=25):
-    
+def extract_topn_from_vector(feature_names, sorted_items, topn=25):    
     # Use only topn items from vector
     sorted_items = sorted_items[:topn]
     score_vals = []
@@ -22,13 +21,10 @@ def extract_topn_from_vector(feature_names, sorted_items, topn=25):
     
     # Word index and corresponding tf-idf score
     for idx, score in sorted_items:
-        
         # Keep track of feature name and its corresponding score
         score_vals.append(round(score, 3))
         feature_vals.append(feature_names[idx])
- 
     # Create tuples of feature,score
-    # Results = zip(feature_vals,score_vals)
     results= {}
     for idx in range(len(feature_vals)):
         results[feature_vals[idx]]=score_vals[idx]
@@ -103,4 +99,4 @@ def minetext(text):
     sorted_tfidf=sorted(tfidflist.items(),key=lambda x:x[1])
     
     
-    return tf_idf_list
+    return corpus
