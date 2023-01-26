@@ -31,10 +31,7 @@ def extract_topn_from_vector(feature_names, sorted_items, topn=25):
     return results
     
 def minetext(text):
-    with open('vehicle.txt',encoding="utf8") as f:
-        lines = f.read()
-        text=lines
-        text_dict=text.split(".")
+    text_dict=text.split(".")
     ds_count=len(text_dict)
     
     #Preprocessing
