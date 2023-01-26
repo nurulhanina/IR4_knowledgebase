@@ -193,8 +193,15 @@ def gloss_err(i):
         button_phold=col3.empty()
         do_action=button_phold.button(button,key=x+(i*1000))
         if do_action:
-            searchpage(l[x])
+            printquery(l[x])
             button_phold.empty()
+            
+def printquery(textq):
+    for i in eng_word:
+        if word_search.lower()==i.lower():
+            printwhole(count)
+            break
+    
 
 def homepage():
     st.title("SISTEM ISTILAH DWIBAHASA")
@@ -225,8 +232,9 @@ def searchpage(searchtext):
     st.title("Sistem Istilah Dwibahasa")
     st.image(url_image)
     st.header("Search Query")
-            
-    if searchtext!="":
+    word_search=st.text_input("Enter Text")
+    st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]")
+    if word_search:
         count=0
         for i in eng_word:
             if word_search.lower()==i.lower():
@@ -235,18 +243,6 @@ def searchpage(searchtext):
             count+=1
         if count>len(eng_word):
             printtext("Word Not Found")
-    else:
-        word_search=st.text_input("Enter Text")
-        st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]")
-        if word_search:
-            count=0
-            for i in eng_word:
-                if word_search.lower()==i.lower():
-                    printwhole(count)
-                    break
-                count+=1
-            if count>len(eng_word):
-                printtext("Word Not Found")
             
 def knowledgepage():
     
