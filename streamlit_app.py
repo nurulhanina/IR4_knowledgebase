@@ -225,19 +225,6 @@ def searchpage(searchtext):
     st.title("Sistem Istilah Dwibahasa")
     st.image(url_image)
     st.header("Search Query")
-    
-    word_search=st.text_input("Enter Text")
-    st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]")
-    
-    if word_search:
-        count=0
-        for i in eng_word:
-            if word_search.lower()==i.lower():
-                printwhole(count)
-                break
-            count+=1
-        if count>len(eng_word):
-            printtext("Word Not Found")
             
     if searchtext!="":
         count=0
@@ -248,6 +235,18 @@ def searchpage(searchtext):
             count+=1
         if count>len(eng_word):
             printtext("Word Not Found")
+    else:
+        word_search=st.text_input("Enter Text")
+        st.caption("Do write the exact spelling of the terminology you want to search, or the result will be [Word Not Found]"
+        if word_search:
+            count=0
+            for i in eng_word:
+                if word_search.lower()==i.lower():
+                    printwhole(count)
+                    break
+                count+=1
+            if count>len(eng_word):
+                printtext("Word Not Found")
             
 def knowledgepage():
     
