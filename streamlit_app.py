@@ -31,6 +31,14 @@ def homepage():
 def searchpage():
     st.title("Sistem Istilah Dwibahasa")
     st.markdown("Search Query")
+    # define the scope
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets']
+    creds = ServiceAccountCredentials.from_json_keyfile_name('gs_credential.json', scope)
+    client = gspread.authorize(creds)
+    sheet = client.open('ir4_database')
+    sheet_instance = sheet.get_worksheet(0)
+    client = gspread.authorize(creds)
+    st.write(sheet_instance.cell(col=3,row=2))
     
 def knowledgepage():
     st.title("Sistem Istilah Dwibahasa")
@@ -53,11 +61,11 @@ if options=='Home':
 elif options=='Search Page':
     searchpage()
 elif options=='Knowledge Expert Page':
-    searchpage()
+    knowledgepage()
 elif options=='Upload Page':
-    searchpage()
+    uploadpage()
 elif options=='Glossary Page':
-    searchpage()
+    glossarypage()
   
 
 

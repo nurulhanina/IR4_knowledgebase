@@ -1,49 +1,24 @@
 #Import the required Libraries
 import streamlit as st
 import pandas as pd
+import gspread
+import oauth2client
+from oauth2client.service_account import ServiceAccountCredentials
 
-st.set_page_config(layout="wide")
+# define the scope
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets']
 
-# Functions for each of the pages
-def home(uploaded_file):
-    if uploaded_file:
-        st.header('Begin exploring the data using the menu on the left')
-    else:
-        st.header('To begin please upload a file')
+# add credentials to the account
+creds = ServiceAccountCredentials.from_json_keyfile_name('gs_credential.json', scope)
 
-def data_summary(df):
-    st.header('Statistics of Dataframe')
-    st.write(df.describe())
+client = gspread.authorize(creds)
 
-def data_header(df):
-    st.header('Header of Dataframe')
-    st.write(df.head())
+# get the instance of the Spreadsheet
+sheet = client.open('ir4_database')
 
-def displayplot(df):
-    st.header('Plot of Data')
-    
+# get the first sheet of the Spreadsheet
+sheet_instance = sheet.get_worksheet(0)
 
-# Add a title and intro text
-st.title('Earthquake Data Explorer')
-st.text('This is a web app to allow exploration of Earthquake Data')
-
-# Sidebar setup
-st.sidebar.title('Sidebar')
-upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
-#Sidebar navigation
-st.sidebar.title('Navigation')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Summary', 'Data Header', 'Scatter Plot'])
-
-# Check if file has been uploaded
-if upload_file is not None:
-    df = pd.read_csv(upload_file)
-
-# Navigation options
-if options == 'Home':
-    home(upload_file)
-elif options == 'Data Summary':
-    data_summary(df)
-elif options == 'Data Header':
-    data_header(df)
-elif options == 'Scatter Plot':
-    displayplot(df)
+# authorize the clientsheet 
+client = gspread.authorize(creds)
+st.write(sheet_instance.cell(col=3,row=2))
