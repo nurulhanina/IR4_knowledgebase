@@ -99,4 +99,4 @@ def minetext(text):
     sorted_tfidf=sorted(tfidflist.items(),key=lambda x:x[1])
     
     
-    return corpus
+    return sorted_tfidf
