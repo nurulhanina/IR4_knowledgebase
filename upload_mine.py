@@ -10,7 +10,7 @@ import re
 
 
 def minetext(text):
-    listtext=[]
+    listtext=["Hehehe","HUHUHU"]
     text_dict=text.split(".")
     ds_count=len(text_dict)
     print(text_dict)

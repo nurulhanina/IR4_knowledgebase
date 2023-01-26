@@ -340,7 +340,8 @@ def uploadpage():
     st.markdown("The Keywords Extracted")
     if text_mine!="":
         listmine=upMine.minetext(text_mine)
-        st.markdown("HIHI")
+        for index_mine in range(len(list_mine)):
+            st.markdown(index_mine+". "+ list_mine[index_mine])
     if st.button("Show"):
         st.markdown("reaction controlling', 0.116")
         st.markdown('proved system pedestrians, 0.116')
