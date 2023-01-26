@@ -340,7 +340,7 @@ def uploadpage():
     if text_mine!="":
         listmine=upMine.minetext(text_mine)
         for index_mine in range(len(listmine)):
-            st.markdown(listmine[index_mine],key=index_mine)
+            st.write(listmine[index_mine],key=index_mine)
     if st.button("Show"):
         st.markdown("reaction controlling', 0.116")
         st.markdown('proved system pedestrians, 0.116')
