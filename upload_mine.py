@@ -9,39 +9,6 @@ import math
 import re
 from scipy.sparse import coo_matrix
 
-def get_top_n_words(corpus, n=None):\
-    vec = CountVectorizer().fit(corpus)
-    bag_of_words = vec.transform(corpus)
-    sum_words = bag_of_words.sum(axis=0) 
-    words_freq = [(word, sum_words[0, idx]) for word, idx in      
-                   vec.vocabulary_.items()]
-    words_freq =sorted(words_freq, key = lambda x: x[1], 
-                       reverse=True)
-    return words_freq[:n]
-
-def get_top_n2_words(corpus, n=None):
-    vec1 = CountVectorizer(ngram_range=(2,2),  
-            max_features=2000).fit(corpus)
-    bag_of_words = vec1.transform(corpus)
-    sum_words = bag_of_words.sum(axis=0) 
-    words_freq = [(word, sum_words[0, idx]) for word, idx in     
-                  vec1.vocabulary_.items()]
-    words_freq =sorted(words_freq, key = lambda x: x[1], 
-                reverse=True)
-    return words_freq[:n]
-
-def get_top_n3_words(corpus, n=None):
-    vec1 = CountVectorizer(ngram_range=(3,3), 
-           max_features=2000).fit(corpus)
-    bag_of_words = vec1.transform(corpus)
-    sum_words = bag_of_words.sum(axis=0) 
-    words_freq = [(word, sum_words[0, idx]) for word, idx in     
-                  vec1.vocabulary_.items()]
-    words_freq =sorted(words_freq, key = lambda x: x[1], 
-                reverse=True)
-    return words_freq[:n]
-    
-
 def sort_coo(coo_matrix):
     tuples = zip(coo_matrix.col, coo_matrix.data)
     return sorted(tuples, key=lambda x: (x[1], x[0]), reverse=True)
@@ -67,8 +34,6 @@ def extract_topn_from_vector(feature_names, sorted_items, topn=25):
         results[feature_vals[idx]]=score_vals[idx]
     return results
     
-    
-        
 def minetext(text):
     text_output={}
     text_dict=text.split(".")
