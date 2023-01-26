@@ -341,7 +341,8 @@ def uploadpage():
         listmine=upMine.minetext(text_mine)
         for index_mine in range(len(listmine)):
             st.write(listmine[index_mine],key=index_mine)
-            sheet_instance3.append_row(listmine[index_mine][0])
+            row_mine=[listmine[index_mine][0]]
+            sheet_instance3.append_row(row_mine)
             
 def glossarypage():
     st.title("Sistem Istilah Dwibahasa")
