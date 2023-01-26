@@ -338,7 +338,7 @@ def uploadpage():
                 text_mine=upload_text
                 
     st.markdown("The Keywords Extracted")
-    list_mine=minetext(text_mine)
+    #list_mine=minetext(text_mine)
             
     
 def glossarypage():
