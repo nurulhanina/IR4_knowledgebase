@@ -4,6 +4,7 @@ import oauth2client
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 from PyPDF2 import *
+import upload_mine as upMine
 
 #Define Database
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets']
@@ -211,6 +212,7 @@ def show_text(t):
     st.caption("Press Process to begin")
     if st.button("Process"):
         text_raw=t
+        return text_raw
         
 #Functions for PDF extraction
 def pdf_page_num(pdf_file):
@@ -311,6 +313,7 @@ def knowledgepage():
                 knowexp(0,new_entry)
                                     
 def uploadpage():
+    text_mine=""
     st.title("Sistem Istilah Dwibahasa")
     st.image(url_image)
     st.header("Upload Sources")
@@ -320,6 +323,7 @@ def uploadpage():
         text_upload=st.text_input("Enter Text")
         if text_upload:
             show_text(text_upload)
+            text_mine=text_upload
             
     with st.expander("Uploading PDF File"):
         st.caption("Upload a PDF file of a journal, research paper, newsletter to get your keywords.")
@@ -331,6 +335,10 @@ def uploadpage():
             if st.button("Confirm Pages"):
                 upload_text=extract_pdf(uploaded_file,start,end)
                 show_text(upload_text)
+                text_mine=upload_text
+                
+    st.markdown("The Keywords Extracted")
+    list_mine=minetext(text_mine)
             
     
 def glossarypage():
