@@ -197,10 +197,12 @@ def gloss_err(i):
             button_phold.empty()
             
 def printquery(textq):
+    count=0
     for i in eng_word:
-        if word_search.lower()==i.lower():
+        if textq.lower()==i.lower():
             printwhole(count)
             break
+        count+=1
     
 
 def homepage():
