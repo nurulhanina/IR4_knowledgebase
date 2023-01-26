@@ -2,13 +2,30 @@ import streamlit as st
 import gspread
 import oauth2client
 from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
+
+#Define Database
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets']
+creds = ServiceAccountCredentials.from_json_keyfile_name('gs_credential.json', scope)
+client = gspread.authorize(creds)
+sheet = client.open('ir4_database')
+#Database - IR4 Term
+sheet_instance1 = sheet.get_worksheet(0)
+records_data1 = sheet_instance1.get_all_records()
+df_term = pd.DataFrame.from_dict(records_data1)
+#Database - IR4 Ontology
+sheet_instance2 = sheet.get_worksheet(1)
+records_data2 = sheet_instance2.get_all_records()
+df_ont = pd.DataFrame.from_dict(records_data2)
+#Database - IR4 New
+sheet_instance3 = sheet.get_worksheet(2)
+records_data3 = sheet_instance3.get_all_records()
+df_new = pd.DataFrame.from_dict(records_data3)
+url_image="Resources/Header.png"
 
 def homepage():
     st.title("SISTEM ISTILAH DWIBAHASA")
-
-    url="Resources/Header.png"
-    st.image(url)
-    #st.caption("")
+    st.image(url_image)
     st.caption("Hello and Good Day. This is Nurul Hanina's Final Year Project. \nThis project is about a web Dictionary Application that allows user to search terminologies that are related to the domain of the 4th Industrial Revolution")
 
     st.write("Do Hover to the Left Navigation Pane to use the Application")
@@ -33,15 +50,10 @@ def homepage():
 
 def searchpage():
     st.title("Sistem Istilah Dwibahasa")
-    st.markdown("Search Query")
+    st.image(url_image)
+    st.header("Search Query")
     # define the scope
-    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('gs_credential.json', scope)
-    client = gspread.authorize(creds)
-    sheet = client.open('ir4_database')
-    sheet_instance = sheet.get_worksheet(0)
-    client = gspread.authorize(creds)
-    st.write(sheet_instance.cell(col=3,row=2))
+    
     
 def knowledgepage():
     st.title("Sistem Istilah Dwibahasa")
