@@ -48,15 +48,15 @@ st.sidebar.title('Navigation Pane')
 options = st.sidebar.radio('Select what you want to display:', ['Home', 'Search Page', 'Knowledge Expert', 'Upload Page','Glossary Page'])
 
 
-if options='Home':
+if options=='Home':
     homepage()
-elif options='Search Page':
+elif options=='Search Page':
     searchpage()
-elif options='Knowledge Expert Page':
+elif options=='Knowledge Expert Page':
     searchpage()
-elif options='Upload Page':
+elif options=='Upload Page':
     searchpage()
-elif options='Glossary Page':
+elif options=='Glossary Page':
     searchpage()
   
 
