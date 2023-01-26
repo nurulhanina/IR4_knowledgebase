@@ -210,9 +210,8 @@ def show_text(t):
     st.caption("This is the text that has been uploaded")
     st.markdown(t)
     st.caption("Press Process to begin")
-    if st.button("Process"):
-        text_raw=t
-        return text_raw
+    text_raw=t
+    return text_raw
         
 #Functions for PDF extraction
 def pdf_page_num(pdf_file):
@@ -340,8 +339,8 @@ def uploadpage():
     st.markdown("The Keywords Extracted")
     if text_mine!="":
         listmine=upMine.minetext(text_mine)
-        for index_mine in range(len(list_mine)):
-            st.markdown(index_mine+". "+ list_mine[index_mine])
+        for index_mine in range(len(listmine)):
+            st.markdown(index_mine+". "+ listmine[index_mine])
     if st.button("Show"):
         st.markdown("reaction controlling', 0.116")
         st.markdown('proved system pedestrians, 0.116')
