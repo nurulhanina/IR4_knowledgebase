@@ -73,7 +73,7 @@ def printtext(text_w):
 
 def printwhole(count):
     st.subheader("English Text")
-    st.text(word_search)
+    st.text(eng_word[count])
     eng_definition="\nDefinition: "+eng_def[count]
     st.text(eng_definition)
     
@@ -150,14 +150,10 @@ def knowexp(cx,text):
     newsame=["","","","",""]
     st.text("\nThe word you selected is: "+text)
     new_defen=st.text_input("Insert the English Definition",key="DEF_EN")
-    st.caption("Make sure that the spelling is correct")
     new_my=st.text_input("Insert the Terminology's Malay Definition",key="MY")
-    st.caption("Make sure that the spelling is correct")
     new_defmy=st.text_input("Insert the Definition of the Terminology's Malay Translation",key="DEF_MY")
-    st.caption("Make sure that the spelling is correct")
     classadd=write_hierarchy()
     newclass=classadd
-    st.caption("Make sure that the spelling is correct")
     newsame[0]=(st.text_input("Insert the Synonym",key="SA1"))
     newsame[1]=(st.text_input("Insert the Synonym",key="SA2"))
     newsame[2]=(st.text_input("Insert the Synonym",key="SA3"))
@@ -282,7 +278,7 @@ def knowledgepage():
     st.header("Update Knowledge Base")
     
     knowledge_option=st.radio("What would you like to do?",('Automated Entry','New Entry'))
-    
+    st.caption("Make sure that the spelling is correct")
     if knowledge_option=='Automated Entry':
         colms=st.columns((1,2,1))
         field=["No.","Terminology","Select"]
