@@ -62,11 +62,11 @@ def minetext(text):
     
     # Tokenize the text and build a vocabulary of known words
     from sklearn.feature_extraction.text import CountVectorizer
-    cv=CountVectorizer(max_df=0.8,stop_words=stop_words, max_features=10000, ngram_range=(1,3))
+    cv=CountVectorizer(max_df=1.0,stop_words=stop_words, max_features=10000, ngram_range=(1,3))
     X=cv.fit_transform(corpus)
     
     from sklearn.feature_extraction.text import CountVectorizer
-    cv=CountVectorizer(max_df=0.8,stop_words=stop_words, max_features=1000, ngram_range=(1,3))
+    cv=CountVectorizer(max_df=1.0,stop_words=stop_words, max_features=1000, ngram_range=(1,3))
     X=cv.fit_transform(corpus)
     
     from sklearn.feature_extraction.text import TfidfTransformer 
