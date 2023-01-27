@@ -272,7 +272,7 @@ def searchpage(searchtext):
                 printwhole(count)
                 break
             count+=1
-        if count>len(eng_word):
+        if count>len(eng_word)-1:
             printtext("Word Not Found")
             
 def knowledgepage():
