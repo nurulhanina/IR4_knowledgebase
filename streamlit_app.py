@@ -251,9 +251,7 @@ def homepage():
     with st.expander("Upload Page"):
         st.caption("This page allows users to add any articles/journals/research papers that is related to the domain where the application can retrieve the keywords of the sources to be added to the knowledge base.")
     with st.expander("Glossary Page"):
-        st.caption("This page displays all the terminologies that are within the knowledge base.")
-    
-#TODO - Add more explanation to each of the expanders
+        st.caption("This page displays all the terminologies that are within the knowledge base. You may also search out the definition of terminology's definition, malay translation, synonyms and hierarchies")
 
 def searchpage(searchtext):
     st.title("Sistem Istilah Dwibahasa")
