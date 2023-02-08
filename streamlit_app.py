@@ -245,7 +245,7 @@ def homepage():
     st.write("\nHere are some helpful tips")
 
     with st.expander("Search Page"):
-        st.caption("This page allows users to search for the terminology that they are looking for. The application also provides the Malay Translation, Synonms and its Ontological Parent Class of the terminology.")
+        st.caption("This page allows users to search for the terminology that they are looking for. The application also provides the Malay Translation, Synonyms and its Ontological Parent Class of the terminology.")
     with st.expander("Knowledge Expert Page"):
         st.caption("This page is for users that are experts within the domain who can add to the knowledge base.")
     with st.expander("Upload Page"):
